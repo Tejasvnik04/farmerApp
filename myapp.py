@@ -193,25 +193,27 @@ def main():
     # Sidebar Navigation
     st.sidebar.title("Navigation")
     page = st.sidebar.selectbox("Select a page", ["Home", "Market Finder", "Manage Farmers", "Contact Us"])
-    if page == "Contact Us":
+    if page == "Manage Farmers":
+        manage_farmers_data()  # Ensure this function is called
+    
+    elif page == "Contact Us":
         st.header("Contact Us")
-        st.markdown("""
-            <p>If you have any questions, feedback, or need assistance, feel free to reach out to us! 
-            We value your input and are here to help you find the best local produce. 
-            Please leave your message below, and we will get back to you as soon as possible.</p>
-        """, unsafe_allow_html=True)
+        st.markdown("""<p>If you have any questions, feedback, or need assistance, feel free to reach out to us! 
+        We value your input and are here to help you find the best local produce. 
+        Please leave your message below, and we will get back to you as soon as possible.</p>""", unsafe_allow_html=True)
 
         # Text box for collecting messages
         message = st.text_area("Your Message", height=150)
 
         if st.button("Send Message"):
             if message:
-                # You can implement the functionality to save or send the message as needed
+                # Implement functionality to save or send the message as needed
                 st.success("Your message has been sent successfully!")
                 # Optionally, clear the text area after sending
                 message = ""
             else:
                 st.error("Please enter a message before sending.")
+
 
     if page == "Home":
         st.header("Welcome to the Farmer's Market Finder!")
